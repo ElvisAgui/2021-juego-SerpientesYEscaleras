@@ -5,15 +5,15 @@
  */
 package com.proyecto1ipc.frontend;
 
+import com.proyecto1ipc.jugador.ManjadorJugadores;
+
 /**
  *
  * @author elvis_agui
  */
 public class RegistroJugadores extends javax.swing.JFrame {
 
-    /**
-     * Creates new form RegistroJugadores
-     */
+    private int id = 0;
     public RegistroJugadores() {
         this.setExtendedState(6);
         initComponents();
@@ -32,8 +32,14 @@ public class RegistroJugadores extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        nombrejTextField1 = new javax.swing.JTextField();
+        nombrejLabel = new javax.swing.JLabel();
+        apellidojLabel = new javax.swing.JLabel();
+        apellidojTextField = new javax.swing.JTextField();
+        registrojButton = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        asignarIdjButton = new javax.swing.JButton();
+        idjTextField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -51,14 +57,55 @@ public class RegistroJugadores extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Para Registrarte ");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        nombrejTextField1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        nombrejTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                nombrejTextField1ActionPerformed(evt);
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Inconsolata Extra Expanded Black", 1, 14)); // NOI18N
-        jLabel4.setText("Nombre");
+        nombrejLabel.setFont(new java.awt.Font("Inconsolata Extra Expanded Black", 1, 18)); // NOI18N
+        nombrejLabel.setText("Nombre");
+
+        apellidojLabel.setFont(new java.awt.Font("Inconsolata Extra Expanded Black", 1, 18)); // NOI18N
+        apellidojLabel.setText("Apellido");
+
+        apellidojTextField.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        apellidojTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                apellidojTextFieldActionPerformed(evt);
+            }
+        });
+
+        registrojButton.setBackground(new java.awt.Color(255, 255, 51));
+        registrojButton.setFont(new java.awt.Font("Inconsolata Extra Expanded Black", 1, 14)); // NOI18N
+        registrojButton.setText("Registarse");
+        registrojButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        registrojButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registrojButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Inconsolata Extra Expanded Black", 1, 18)); // NOI18N
+        jLabel6.setText("Tu ID es;");
+
+        asignarIdjButton.setBackground(new java.awt.Color(255, 255, 51));
+        asignarIdjButton.setFont(new java.awt.Font("Inconsolata Semi Expanded Black", 1, 14)); // NOI18N
+        asignarIdjButton.setText("Listo");
+        asignarIdjButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        asignarIdjButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                asignarIdjButtonActionPerformed(evt);
+            }
+        });
+
+        idjTextField.setEditable(false);
+        idjTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idjTextFieldActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -74,11 +121,24 @@ public class RegistroJugadores extends javax.swing.JFrame {
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(35, 35, 35)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nombrejLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(apellidojLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 257, Short.MAX_VALUE)
+                                .addComponent(asignarIdjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(133, 133, 133)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(137, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(apellidojTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nombrejTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(registrojButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(48, 48, 48))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(160, 160, 160)
+                .addComponent(idjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -88,10 +148,22 @@ public class RegistroJugadores extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nombrejLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(397, Short.MAX_VALUE))
+                .addComponent(nombrejTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(apellidojLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(asignarIdjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(apellidojTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(57, 57, 57)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(idjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                .addComponent(registrojButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47))
         );
 
         jLabel1.setBackground(new java.awt.Color(102, 153, 255));
@@ -134,19 +206,55 @@ public class RegistroJugadores extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void nombrejTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombrejTextField1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_nombrejTextField1ActionPerformed
+
+    private void apellidojTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellidojTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_apellidojTextFieldActionPerformed
+
+    private void registrojButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrojButtonActionPerformed
+        String datos[] = new String[2];
+        datos[0]=nombrejTextField1.getText();
+        datos[1]=apellidojTextField.getText();
+        ManjadorJugadores.constructorJugador(id, datos);
+        this.dispose();
+    }//GEN-LAST:event_registrojButtonActionPerformed
+
+    private void idjTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idjTextFieldActionPerformed
+    }//GEN-LAST:event_idjTextFieldActionPerformed
+
+    private void asignarIdjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asignarIdjButtonActionPerformed
+       this.id = (int)(Math.random()*999);
+       idjTextField.setText("785"+id+"");
+       id = Integer.parseInt(idjTextField.getText());
+    }//GEN-LAST:event_asignarIdjButtonActionPerformed
 
 
+    
+    
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel apellidojLabel;
+    private javax.swing.JTextField apellidojTextField;
+    private javax.swing.JButton asignarIdjButton;
     private javax.swing.JPanel fondoJPanel;
+    private javax.swing.JTextField idjTextField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel nombrejLabel;
+    private javax.swing.JTextField nombrejTextField1;
+    private javax.swing.JButton registrojButton;
     // End of variables declaration//GEN-END:variables
+
+
+
+
+
 }
