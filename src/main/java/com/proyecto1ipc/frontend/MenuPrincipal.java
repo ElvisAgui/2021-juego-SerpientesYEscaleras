@@ -14,8 +14,9 @@ import javax.swing.JPanel;
  */
 public class MenuPrincipal extends javax.swing.JFrame {
 
-    FondoPanel fondo = new FondoPanel();
-    RegistroJugadores registro = new RegistroJugadores();
+    private FondoPanel fondo = new FondoPanel();
+    private RegistroJugadores registro = new RegistroJugadores();
+    private LobbyJuego lobby = new LobbyJuego();
     public MenuPrincipal() {
         this.setContentPane(fondo);
         this.setExtendedState(6);
@@ -148,7 +149,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_regristarJugadoresjButtonActionPerformed
 
     private void jugarJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jugarJButtonActionPerformed
-        // TODO add your handling code here:
+
+        this.lobby.setVisible(true);
+        this.dispose();
+
     }//GEN-LAST:event_jugarJButtonActionPerformed
 
     private void reportesJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportesJButtonActionPerformed

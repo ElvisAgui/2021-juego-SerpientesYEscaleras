@@ -219,6 +219,9 @@ public class RegistroJugadores extends javax.swing.JFrame {
         datos[0]=nombrejTextField1.getText();
         datos[1]=apellidojTextField.getText();
         ManjadorJugadores.constructorJugador(id, datos);
+        nombrejTextField1.setText("");
+        apellidojTextField.setText("");
+        idjTextField.setText("");
         this.dispose();
     }//GEN-LAST:event_registrojButtonActionPerformed
 
