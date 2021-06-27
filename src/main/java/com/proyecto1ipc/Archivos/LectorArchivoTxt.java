@@ -23,10 +23,14 @@ public class LectorArchivoTxt {
     private static int[] dimenciones = new int[2];
     private static int[] pierdeTur = new int[30];
     private static int[] tiradado = new int[30];
-    private static int[] avanza = new int[30];
-    private static int[] retroces = new int[30];
-    private static int[] subid = new int[60];
-    private static int[] bajad = new int[30];
+    private static int[] avanza = new int[60];
+    private static int[] retroces = new int[60];
+    private static int[] subid = new int[100];
+    private static int[] bajad = new int[100];
+    
+    public LectorArchivoTxt(){
+        inicializar();
+    }
 
     public void leerFichero(File archivo) throws FileNotFoundException, IOException {
         FileReader fr = new FileReader(archivo);
@@ -54,8 +58,9 @@ public class LectorArchivoTxt {
                 String lineaDeCampos = linea.substring(pierdeTurno.length(), linea.length() - 2);
                 campos = lineaDeCampos.split(",");
                 if (verificacion(campos)) {
-                    pierdeTur[0] = Integer.parseInt(campos[0]);
-                    pierdeTur[1] = Integer.parseInt(campos[1]);
+                    int i = indice(pierdeTur);
+                    pierdeTur[i] = Integer.parseInt(campos[0]);
+                    pierdeTur[i+1] = Integer.parseInt(campos[1]);
                 }
             } else {
                 aux = linea.substring(0, 10);
@@ -63,8 +68,9 @@ public class LectorArchivoTxt {
                     String lineaDeCampos = linea.substring(tirarDado.length(), linea.length() - 2);
                     campos = lineaDeCampos.split(",");
                     if (verificacion(campos)) {
-                        tiradado[0] = Integer.parseInt(campos[0]);
-                        tiradado[1] = Integer.parseInt(campos[1]);
+                        int i = indice(tiradado);
+                        tiradado[i] = Integer.parseInt(campos[0]);
+                        tiradado[i+1] = Integer.parseInt(campos[1]);
                     }
                 } else {
                     aux = linea.substring(0, 8);
@@ -72,8 +78,10 @@ public class LectorArchivoTxt {
                         String lineaDeCampos = linea.substring(avanz.length(), linea.length() - 2);
                         campos = lineaDeCampos.split(",");
                         if (verificacion(campos)) {
-                            avanza[0] = Integer.parseInt(campos[0]);
-                            avanza[1] = Integer.parseInt(campos[1]);
+                            int i = indice(avanza);
+                            avanza[i] = Integer.parseInt(campos[0]);
+                            avanza[i+1] = Integer.parseInt(campos[1]);
+                            avanza[i+2] = Integer.parseInt(campos[2]);
                         }
                     } else {
                         aux = linea.substring(0, 11);
@@ -81,8 +89,10 @@ public class LectorArchivoTxt {
                             String lineaDeCampos = linea.substring(retroceso.length(), linea.length() - 2);
                             campos = lineaDeCampos.split(",");
                             if (verificacion(campos)) {
-                                retroces[0] = Integer.parseInt(campos[0]);
-                                retroces[1] = Integer.parseInt(campos[1]);
+                                int i = indice(retroces);
+                                retroces[i] = Integer.parseInt(campos[0]);
+                                retroces[i+1] = Integer.parseInt(campos[1]);
+                                retroces[i+2] = Integer.parseInt(campos[2]);
                             }
                         } else {
                             aux = linea.substring(0, 8);
@@ -90,8 +100,11 @@ public class LectorArchivoTxt {
                                 String lineaDeCampos = linea.substring(subida.length(), linea.length() - 2);
                                 campos = lineaDeCampos.split(",");
                                 if (verificacion(campos)) {
-                                    subid[0] = Integer.parseInt(campos[0]);
-                                    subid[1] = Integer.parseInt(campos[1]);
+                                    int i = indice(subid);
+                                    subid[i] = Integer.parseInt(campos[0]);
+                                    subid[i+1] = Integer.parseInt(campos[1]);
+                                    subid[i+2] = Integer.parseInt(campos[2]);
+                                    subid[i+3] = Integer.parseInt(campos[3]);
                                 }
                             } else {
                                 aux = linea.substring(0, 8);
@@ -99,8 +112,11 @@ public class LectorArchivoTxt {
                                     String lineaDeCampos = linea.substring(bajada.length(), linea.length() - 2);
                                     campos = lineaDeCampos.split(",");
                                     if (verificacion(campos)) {
-                                        bajad[0] = Integer.parseInt(campos[0]);
-                                        bajad[1] = Integer.parseInt(campos[1]);
+                                        int i = indice(bajad);
+                                        bajad[i] = Integer.parseInt(campos[0]);
+                                        bajad[i+1] = Integer.parseInt(campos[1]);
+                                        bajad[i+2] = Integer.parseInt(campos[2]);
+                                        bajad[i+3] = Integer.parseInt(campos[3]);
                                     }
                                 }
 
@@ -116,12 +132,39 @@ public class LectorArchivoTxt {
 
     }
 
+    private int indice(int[] arreglo) {
+        int inci = 0;
+        for (int i = 0; i < arreglo.length - 1; i++) {
+            if (arreglo[i] == -1) {
+                inci =i;
+                break;
+            }
+        }
+        return inci;
+    }
+
+    private void negativo(int [] arreglo) {
+        for (int i = 0; i < arreglo.length; i++) {
+            arreglo[i] = -1;
+        }
+    }
+    
+    private void inicializar(){
+        negativo(tiradado);
+        negativo(pierdeTur);
+        negativo(avanza);
+        negativo(retroces);
+        negativo(subid);
+        negativo(bajad);
+    }
+
     private boolean verificacion(String[] num) {
         boolean verificado = true;
         if (num != null) {
             try {
-                int nu = Integer.parseInt(num[0]);
-                nu = Integer.parseInt(num[1]);
+                for (int i = 0; i < num.length; i++) {
+                    int nu = Integer.parseInt(num[i]);
+                }
             } catch (Exception e) {
                 verificado = false;
             }
