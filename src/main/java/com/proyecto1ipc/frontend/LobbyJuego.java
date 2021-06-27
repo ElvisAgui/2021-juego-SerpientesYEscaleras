@@ -19,6 +19,7 @@ import javax.swing.JPanel;
 public class LobbyJuego extends javax.swing.JFrame {
 
     private LectorArchivoTxt lector = new LectorArchivoTxt();
+    private ElegirCompetidores compe = new ElegirCompetidores();
 
     //FondoPanel fondo = new FondoPanel();
     public LobbyJuego() {
@@ -148,7 +149,7 @@ public class LobbyJuego extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void elegirJugadoresjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elegirJugadoresjButtonActionPerformed
-
+        compe.setVisible(true);
     }//GEN-LAST:event_elegirJugadoresjButtonActionPerformed
 
     private void leerArchivojButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leerArchivojButtonActionPerformed
