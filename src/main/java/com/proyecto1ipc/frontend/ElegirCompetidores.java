@@ -165,13 +165,13 @@ public class ElegirCompetidores extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void seleccionjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionjButtonActionPerformed
-        int idax = (int)jComboBox1.getSelectedItem();
+        int idax = (int) jComboBox1.getSelectedItem();
         for (Jugador jugador : ManjadorJugadores.Jugadores) {
             if (idax == jugador.getId()) {
                 jugador.setEnPartida(true);
             }
         }
-        
+
 
     }//GEN-LAST:event_seleccionjButtonActionPerformed
 
