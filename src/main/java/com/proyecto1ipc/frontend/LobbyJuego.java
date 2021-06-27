@@ -1,11 +1,15 @@
-
 package com.proyecto1ipc.frontend;
 
+import com.proyecto1ipc.Archivos.LectorArchivoTxt;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -14,16 +18,17 @@ import javax.swing.JPanel;
  */
 public class LobbyJuego extends javax.swing.JFrame {
 
+    private LectorArchivoTxt lector = new LectorArchivoTxt();
+
     //FondoPanel fondo = new FondoPanel();
     public LobbyJuego() {
-        
+
         //this.setContentPane(fondo);
         initComponents();
         asignarImagenBotones();
-        
+
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -143,14 +148,30 @@ public class LobbyJuego extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void elegirJugadoresjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elegirJugadoresjButtonActionPerformed
-        
+
     }//GEN-LAST:event_elegirJugadoresjButtonActionPerformed
 
     private void leerArchivojButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leerArchivojButtonActionPerformed
-        
+
+        try {
+            JFileChooser fileChosser = new JFileChooser();
+            int seleccion = fileChosser.showOpenDialog(this);
+            if (seleccion == JFileChooser.APPROVE_OPTION) {
+                File fichero = fileChosser.getSelectedFile();
+                try {
+                    this.lector.leerFichero(fichero);
+                } catch (IOException ex) {
+                    JOptionPane.showMessageDialog(this, "Error al leer el archivo");
+                }
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "completado");
+
+        }
+
     }//GEN-LAST:event_leerArchivojButtonActionPerformed
 
-   
     class FondoPanel extends JPanel {
 
         private Image imagen;
@@ -166,17 +187,18 @@ public class LobbyJuego extends javax.swing.JFrame {
             super.paint(g);
         }
     }
-    
-    private void asignarImagenBotones(){
+
+    private void asignarImagenBotones() {
         elegirJugadoresjButton.setIcon(ajustar("/Imagenes/jugador.png", elegirJugadoresjButton));
         leerArchivojButton.setIcon(ajustar("/Imagenes/archivo.png", leerArchivojButton));
     }
-    
-    private Icon ajustar(String direccion, JButton boton){
+
+    private Icon ajustar(String direccion, JButton boton) {
         ImageIcon icon = new ImageIcon(getClass().getResource(direccion));
         ImageIcon icono = new ImageIcon(icon.getImage().getScaledInstance(boton.getWidth(), boton.getHeight(), Image.SCALE_DEFAULT));
         return icono;
     }
+
     class FondoMenu extends JPanel {
 
         private Image imagen;
