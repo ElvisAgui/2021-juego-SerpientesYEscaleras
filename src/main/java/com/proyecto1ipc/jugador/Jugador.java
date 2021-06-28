@@ -12,9 +12,10 @@ public class Jugador {
     private int partidadGanadas;
     private int partidadPerdiadas;
     private int partidasJugadas;
-    private boolean turno;
+    private boolean turno = false;
     private boolean enPartida;
     private boolean pierdeTurno = false;
+    private int pos=0;
 
     public Jugador(int id, String nombre, String apellido) {
         this.id = id;
@@ -42,6 +43,15 @@ public class Jugador {
     public void setId(int id) {
         this.id = id;
     }
+
+    public int getPos() {
+        return pos;
+    }
+
+    public void setPos(int pos) {
+        this.pos = pos;
+    }
+    
 
     public String getNombre() {
         return nombre;

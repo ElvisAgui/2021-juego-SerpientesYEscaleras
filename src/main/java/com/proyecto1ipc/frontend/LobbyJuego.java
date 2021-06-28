@@ -20,12 +20,11 @@ public class LobbyJuego extends javax.swing.JFrame {
 
     private LectorArchivoTxt lector = new LectorArchivoTxt();
     private ElegirCompetidores compe = new ElegirCompetidores();
-    private Juego juego = new Juego();
+    private Juego juego;
 
     //FondoPanel fondo = new FondoPanel();
     public LobbyJuego() {
-
-        //this.setContentPane(fondo);
+        
         initComponents();
         asignarImagenBotones();
 
@@ -180,7 +179,7 @@ public class LobbyJuego extends javax.swing.JFrame {
     }//GEN-LAST:event_leerArchivojButtonActionPerformed
 
     private void JugarjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JugarjButtonActionPerformed
-         
+        juego = new Juego(lector);
         juego.setVisible(true);
         this.dispose();
         

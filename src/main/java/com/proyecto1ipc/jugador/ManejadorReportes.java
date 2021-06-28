@@ -32,4 +32,33 @@ public class ManejadorReportes {
         
     }
     
+    public static void tablaPartida(ArrayList<Jugador> jugadores, JTable table) {
+        DefaultTableModel modelo = new DefaultTableModel();
+        table.setModel(modelo);
+        int indx=0;
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Color Ficha");
+        modelo.addColumn("Posicion");
+        for (Jugador jugador : jugadores) {
+            modelo.addRow(new Object[]{jugador.getNombre(),color(indx),jugador.getPos()});
+            indx++;
+        }
+
+    }
+    
+    private static String color(int index){
+        if (index ==0) {
+            return "Rojo";
+        }
+        if (index == 1) {
+            return "Amarillo";
+        }
+        if (index == 2) {
+            return "Azul";
+        }else{
+            return "Verde";
+        }
+        
+    }
+    
 }

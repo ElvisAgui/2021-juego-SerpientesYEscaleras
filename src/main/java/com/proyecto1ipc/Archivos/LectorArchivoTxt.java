@@ -20,16 +20,18 @@ public class LectorArchivoTxt {
     private String retroceso = "retrocede(";
     private String subida = "subida(";
     private String bajada = "bajada(";
-    private static int[] dimenciones = new int[2];
-    private static int[] pierdeTur = new int[30];
-    private static int[] tiradado = new int[30];
-    private static int[] avanza = new int[60];
-    private static int[] retroces = new int[60];
-    private static int[] subid = new int[100];
-    private static int[] bajad = new int[100];
+    private  int[] dimenciones = new int[2];
+    public  int[] pierdeTur = new int[30];
+    public  int[] tiradado = new int[30];
+    public  int[] avanza = new int[60];
+    public  int[] retroces = new int[60];
+    public  int[] subid = new int[100];
+    public  int[] bajad = new int[100];
     
     public LectorArchivoTxt(){
         inicializar();
+//        dimenciones[0]=8;
+//        dimenciones[1]=8;
     }
 
     public void leerFichero(File archivo) throws FileNotFoundException, IOException {
@@ -38,22 +40,26 @@ public class LectorArchivoTxt {
         String linea;
         while ((linea = br.readLine()) != null) {
             separarCampos(linea);
+            
         }
         fr.close();
     }
 
     private void separarCampos(String linea) {
         String campos[] = null;
-        String aux = linea.substring(0, 9);
+        String aux = linea.substring(0, 8);
+        System.out.println(aux);
         if (aux.equalsIgnoreCase(this.inicioTablero)) {
             String lineaDeCampos = linea.substring(inicioTablero.length(), linea.length() - 2);
             campos = lineaDeCampos.split(",");
+            
             if (verificacion(campos)) {
                 dimenciones[0] = Integer.parseInt(campos[0]);
                 dimenciones[1] = Integer.parseInt(campos[1]);
+                System.out.println(""+dimenciones[1]+"  "+dimenciones[0]);
             }
         } else {
-            aux = linea.substring(0, 13);
+            aux = linea.substring(0, 12);
             if (aux.equalsIgnoreCase(pierdeTurno)) {
                 String lineaDeCampos = linea.substring(pierdeTurno.length(), linea.length() - 2);
                 campos = lineaDeCampos.split(",");
@@ -63,7 +69,7 @@ public class LectorArchivoTxt {
                     pierdeTur[i+1] = Integer.parseInt(campos[1]);
                 }
             } else {
-                aux = linea.substring(0, 10);
+                aux = linea.substring(0, 9);
                 if (aux.equalsIgnoreCase(tirarDado)) {
                     String lineaDeCampos = linea.substring(tirarDado.length(), linea.length() - 2);
                     campos = lineaDeCampos.split(",");
@@ -73,7 +79,7 @@ public class LectorArchivoTxt {
                         tiradado[i+1] = Integer.parseInt(campos[1]);
                     }
                 } else {
-                    aux = linea.substring(0, 8);
+                    aux = linea.substring(0, 7);
                     if (aux.equalsIgnoreCase(avanz)) {
                         String lineaDeCampos = linea.substring(avanz.length(), linea.length() - 2);
                         campos = lineaDeCampos.split(",");
@@ -84,7 +90,7 @@ public class LectorArchivoTxt {
                             avanza[i+2] = Integer.parseInt(campos[2]);
                         }
                     } else {
-                        aux = linea.substring(0, 11);
+                        aux = linea.substring(0, 10);
                         if (aux.equalsIgnoreCase(retroceso)) {
                             String lineaDeCampos = linea.substring(retroceso.length(), linea.length() - 2);
                             campos = lineaDeCampos.split(",");
@@ -95,7 +101,7 @@ public class LectorArchivoTxt {
                                 retroces[i+2] = Integer.parseInt(campos[2]);
                             }
                         } else {
-                            aux = linea.substring(0, 8);
+                            aux = linea.substring(0, 7);
                             if (aux.equalsIgnoreCase(subida)) {
                                 String lineaDeCampos = linea.substring(subida.length(), linea.length() - 2);
                                 campos = lineaDeCampos.split(",");
@@ -107,7 +113,7 @@ public class LectorArchivoTxt {
                                     subid[i+3] = Integer.parseInt(campos[3]);
                                 }
                             } else {
-                                aux = linea.substring(0, 8);
+                                aux = linea.substring(0, 7);
                                 if (aux.equalsIgnoreCase(bajada)) {
                                     String lineaDeCampos = linea.substring(bajada.length(), linea.length() - 2);
                                     campos = lineaDeCampos.split(",");
@@ -173,4 +179,14 @@ public class LectorArchivoTxt {
         return verificado;
     }
 
+    public int[] getDimenciones() {
+        return dimenciones;
+    }
+
+    public void setDimenciones(int[] dimenciones) {
+        this.dimenciones = dimenciones;
+    }
+
+    
+    
 }
