@@ -39,9 +39,9 @@ public abstract class Casilla extends JPanel {
                numJug[i]=0; 
             }else{
                 numJug[i] = 16165;
-            }
-            
+            } 
         }
+        
     }
     private void pintar(int pos, JButton boton){
         if (pos == 0) {
@@ -62,12 +62,12 @@ public abstract class Casilla extends JPanel {
     }
     
     public void agregar(){
-        num.setText("-"+pos);
+        num.setText("*"+pos+"*");
         num.setBounds(0, 0, 30, 15);
         this.add(num);
         for (int i = 0; i < ficha.length; i++) {
             if (ficha[i] != null && numJug[i] == 1) {
-                ficha[i].setBounds(30,15,85,95);
+                ficha[i].setBounds(30,15,50,50);
                 this.add(ficha[i]);
             }
             
@@ -119,4 +119,14 @@ public abstract class Casilla extends JPanel {
     public int getPos() {
         return pos;
     }
+
+    public JLabel getNum() {
+        return num;
+    }
+
+    public void setNum(JLabel num) {
+        this.num = num;
+    }
+    
+    
 }

@@ -38,9 +38,8 @@ public class LectorArchivoTxt {
         FileReader fr = new FileReader(archivo);
         BufferedReader br = new BufferedReader(fr);
         String linea;
-        while ((linea = br.readLine()) != null) {
+        while ((linea = br.readLine()) != null) {   
             separarCampos(linea);
-            
         }
         fr.close();
     }
@@ -48,15 +47,12 @@ public class LectorArchivoTxt {
     private void separarCampos(String linea) {
         String campos[] = null;
         String aux = linea.substring(0, 8);
-        System.out.println(aux);
         if (aux.equalsIgnoreCase(this.inicioTablero)) {
             String lineaDeCampos = linea.substring(inicioTablero.length(), linea.length() - 2);
             campos = lineaDeCampos.split(",");
-            
             if (verificacion(campos)) {
                 dimenciones[0] = Integer.parseInt(campos[0]);
                 dimenciones[1] = Integer.parseInt(campos[1]);
-                System.out.println(""+dimenciones[1]+"  "+dimenciones[0]);
             }
         } else {
             aux = linea.substring(0, 12);
@@ -67,6 +63,7 @@ public class LectorArchivoTxt {
                     int i = indice(pierdeTur);
                     pierdeTur[i] = Integer.parseInt(campos[0]);
                     pierdeTur[i+1] = Integer.parseInt(campos[1]);
+                    System.out.println(pierdeTur[i]+" "+pierdeTur[i+1]);
                 }
             } else {
                 aux = linea.substring(0, 9);
