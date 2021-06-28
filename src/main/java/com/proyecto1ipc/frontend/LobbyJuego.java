@@ -20,6 +20,7 @@ public class LobbyJuego extends javax.swing.JFrame {
 
     private LectorArchivoTxt lector = new LectorArchivoTxt();
     private ElegirCompetidores compe = new ElegirCompetidores();
+    private Juego juego = new Juego();
 
     //FondoPanel fondo = new FondoPanel();
     public LobbyJuego() {
@@ -36,7 +37,7 @@ public class LobbyJuego extends javax.swing.JFrame {
 
         fondojPanel = new FondoPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        JugarjButton = new javax.swing.JButton();
         jPanel1 = new FondoMenu();
         elegirJugadoresjButton = new javax.swing.JButton();
         leerArchivojButton = new javax.swing.JButton();
@@ -50,7 +51,12 @@ public class LobbyJuego extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Preparate Para Jugar");
 
-        jButton1.setText("Jugar");
+        JugarjButton.setText("Jugar");
+        JugarjButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JugarjButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout fondojPanelLayout = new javax.swing.GroupLayout(fondojPanel);
         fondojPanel.setLayout(fondojPanelLayout);
@@ -63,7 +69,7 @@ public class LobbyJuego extends javax.swing.JFrame {
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(220, 220, 220))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondojPanelLayout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(JugarjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(137, 137, 137))))
         );
         fondojPanelLayout.setVerticalGroup(
@@ -71,8 +77,8 @@ public class LobbyJuego extends javax.swing.JFrame {
             .addGroup(fondojPanelLayout.createSequentialGroup()
                 .addGap(73, 73, 73)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 297, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(JugarjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(94, 94, 94))
         );
 
@@ -173,6 +179,13 @@ public class LobbyJuego extends javax.swing.JFrame {
 
     }//GEN-LAST:event_leerArchivojButtonActionPerformed
 
+    private void JugarjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JugarjButtonActionPerformed
+         
+        juego.setVisible(true);
+        this.dispose();
+        
+    }//GEN-LAST:event_JugarjButtonActionPerformed
+
     class FondoPanel extends JPanel {
 
         private Image imagen;
@@ -217,9 +230,9 @@ public class LobbyJuego extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton JugarjButton;
     private javax.swing.JButton elegirJugadoresjButton;
     private javax.swing.JPanel fondojPanel;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

@@ -14,6 +14,7 @@ public class Jugador {
     private int partidasJugadas;
     private boolean turno;
     private boolean enPartida;
+    private boolean pierdeTurno = false;
 
     public Jugador(int id, String nombre, String apellido) {
         this.id = id;
@@ -97,5 +98,15 @@ public class Jugador {
     public void setEnPartida(boolean enPartida) {
         this.enPartida = enPartida;
     }
+
+    public boolean isPierdeTurno() {
+        return pierdeTurno;
+    }
+
+    public void setPierdeTurno(boolean pierdeTurno) {
+        this.pierdeTurno = pierdeTurno;
+    }
+    
+    
 
 }

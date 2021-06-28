@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 public class ManjadorJugadores {
 
     public static ArrayList<Jugador> Jugadores = new ArrayList<Jugador>();
+    public static ArrayList<Jugador> Compitiendo = new ArrayList<Jugador>();
 
     public static void constructorJugador(int id, String[] datos) {
         Jugador jugador = null;
