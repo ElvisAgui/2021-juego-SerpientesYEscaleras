@@ -11,8 +11,8 @@ public class Principal {
     
     
     public static void main(String[] args) {
-        VentanaInicial jfsdff = new VentanaInicial();
-        jfsdff.setVisible(true);
+        VentanaInicial principal = new VentanaInicial();
+        principal.setVisible(true);
         
         
         

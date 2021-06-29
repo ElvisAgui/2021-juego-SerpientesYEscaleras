@@ -191,7 +191,7 @@ public class Reportes extends javax.swing.JFrame {
 
         @Override
         public void paint(Graphics g) {
-            imagen = new ImageIcon(getClass().getResource("/Imagenes/rep.png")).getImage();
+            imagen = new ImageIcon(getClass().getResource("/Imagenes/reports.png")).getImage();
 
             g.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
 

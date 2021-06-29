@@ -30,16 +30,16 @@ public class LectorArchivoTxt {
     
     public LectorArchivoTxt(){
         inicializar();
-//        dimenciones[0]=8;
-//        dimenciones[1]=8;
+
     }
 
-    public void leerFichero(File archivo) throws FileNotFoundException, IOException {
+    public void leerFichero(File archivo,JTextArea text) throws FileNotFoundException, IOException {
         FileReader fr = new FileReader(archivo);
         BufferedReader br = new BufferedReader(fr);
         String linea;
         while ((linea = br.readLine()) != null) {   
             separarCampos(linea);
+            text.append("\n"+linea);
         }
         fr.close();
     }
