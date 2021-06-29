@@ -296,7 +296,7 @@ public class Tablero {
     public boolean ganador() {
         boolean ganador = false;
         for (Jugador jugador : ManjadorJugadores.Compitiendo) {
-            if (jugador.getPos() == pos) {
+            if (jugador.getPos() >= (LectorArchivoTxt.getDimenciones()[1]*LectorArchivoTxt.getDimenciones()[0])) {
                 jugador.setPartidadGanadas(1);
                 ganador = true;
                 JOptionPane.showMessageDialog(this.fondo, "Felicidades Jugador " + jugador.getNombre() + " Haz Ganado");
