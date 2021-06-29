@@ -48,7 +48,7 @@ public class LectorArchivoTxt {
         String campos[] = null;
         String aux = linea.substring(0, 8);
         if (aux.equalsIgnoreCase(this.inicioTablero)) {
-            String lineaDeCampos = linea.substring(inicioTablero.length(), linea.length() - 2);
+            String lineaDeCampos = linea.substring(inicioTablero.length(), linea.length() - 1);
             campos = lineaDeCampos.split(",");
             if (verificacion(campos)) {
                 dimenciones[0] = Integer.parseInt(campos[0]);
@@ -57,7 +57,7 @@ public class LectorArchivoTxt {
         } else {
             aux = linea.substring(0, 12);
             if (aux.equalsIgnoreCase(pierdeTurno)) {
-                String lineaDeCampos = linea.substring(pierdeTurno.length(), linea.length() - 2);
+                String lineaDeCampos = linea.substring(pierdeTurno.length(), linea.length() - 1);
                 campos = lineaDeCampos.split(",");
                 if (verificacion(campos)) {
                     int i = indice(pierdeTur);
@@ -67,7 +67,7 @@ public class LectorArchivoTxt {
             } else {
                 aux = linea.substring(0, 9);
                 if (aux.equalsIgnoreCase(tirarDado)) {
-                    String lineaDeCampos = linea.substring(tirarDado.length(), linea.length() - 2);
+                    String lineaDeCampos = linea.substring(tirarDado.length(), linea.length() - 1);
                     campos = lineaDeCampos.split(",");
                     if (verificacion(campos)) {
                         int i = indice(tiradado);
@@ -77,7 +77,7 @@ public class LectorArchivoTxt {
                 } else {
                     aux = linea.substring(0, 7);
                     if (aux.equalsIgnoreCase(avanz)) {
-                        String lineaDeCampos = linea.substring(avanz.length(), linea.length() - 2);
+                        String lineaDeCampos = linea.substring(avanz.length(), linea.length() - 1);
                         campos = lineaDeCampos.split(",");
                         if (verificacion(campos)) {
                             int i = indice(avanza);
@@ -88,7 +88,7 @@ public class LectorArchivoTxt {
                     } else {
                         aux = linea.substring(0, 10);
                         if (aux.equalsIgnoreCase(retroceso)) {
-                            String lineaDeCampos = linea.substring(retroceso.length(), linea.length() - 2);
+                            String lineaDeCampos = linea.substring(retroceso.length(), linea.length() - 1);
                             campos = lineaDeCampos.split(",");
                             if (verificacion(campos)) {
                                 int i = indice(retroces);
@@ -99,7 +99,7 @@ public class LectorArchivoTxt {
                         } else {
                             aux = linea.substring(0, 7);
                             if (aux.equalsIgnoreCase(subida)) {
-                                String lineaDeCampos = linea.substring(subida.length(), linea.length() - 2);
+                                String lineaDeCampos = linea.substring(subida.length(), linea.length() - 1);
                                 campos = lineaDeCampos.split(",");
                                 if (verificacion(campos)) {
                                     int i = indice(subid);
@@ -111,7 +111,7 @@ public class LectorArchivoTxt {
                             } else {
                                 aux = linea.substring(0, 7);
                                 if (aux.equalsIgnoreCase(bajada)) {
-                                    String lineaDeCampos = linea.substring(bajada.length(), linea.length() - 2);
+                                    String lineaDeCampos = linea.substring(bajada.length(), linea.length() - 1);
                                     campos = lineaDeCampos.split(",");
                                     if (verificacion(campos)) {
                                         int i = indice(bajad);

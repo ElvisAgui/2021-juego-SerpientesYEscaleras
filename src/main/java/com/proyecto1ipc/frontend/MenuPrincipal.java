@@ -17,6 +17,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private FondoPanel fondo = new FondoPanel();
     private RegistroJugadores registro = new RegistroJugadores();
     private LobbyJuego lobby = new LobbyJuego();
+    
     public MenuPrincipal() {
         this.setContentPane(fondo);
         this.setExtendedState(6);
@@ -100,11 +101,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
                                 .addGap(168, 168, 168)
                                 .addComponent(jagrearJugLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(reportesJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(295, Short.MAX_VALUE))
-                            .addGroup(fondojPanelLayout.createSequentialGroup()
-                                .addComponent(regristarJugadoresjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                .addComponent(reportesJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(regristarJugadoresjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         fondojPanelLayout.setVerticalGroup(
             fondojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,7 +155,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jugarJButtonActionPerformed
 
     private void reportesJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportesJButtonActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_reportesJButtonActionPerformed
 
    

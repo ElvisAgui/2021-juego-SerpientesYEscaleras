@@ -12,6 +12,7 @@ import com.proyecto1ipc.jugador.ManejadorReportes;
 import com.proyecto1ipc.jugador.ManjadorJugadores;
 import java.awt.Graphics;
 import java.awt.Image;
+import static java.time.Clock.system;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
@@ -24,6 +25,7 @@ public class Juego extends javax.swing.JFrame {
     private FondoPanel fondo = new FondoPanel();
     private Tablero t;
     private LectorArchivoTxt LectorArchivoTxt;
+    private MenuPrincipal regresar;
 
     public Juego(LectorArchivoTxt LectorArchivoTxt) {
         this.LectorArchivoTxt = LectorArchivoTxt;
@@ -53,6 +55,8 @@ public class Juego extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         turnojLabel = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        RegresarjButton = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
 
@@ -164,6 +168,23 @@ public class Juego extends javax.swing.JFrame {
         jLabel3.setText("Inicio");
         jLabel3.setBorder(new javax.swing.border.MatteBorder(null));
 
+        RegresarjButton.setBackground(new java.awt.Color(204, 204, 0));
+        RegresarjButton.setFont(new java.awt.Font("Inconsolata Condensed Black", 1, 18)); // NOI18N
+        RegresarjButton.setForeground(new java.awt.Color(204, 0, 0));
+        RegresarjButton.setText("Volver a Menu");
+        RegresarjButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegresarjButtonActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Salir");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -175,7 +196,10 @@ public class Juego extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(fondoJuegojPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(92, 92, 92)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(RegresarjButton)
+                            .addComponent(jButton2))))
                 .addContainerGap(46, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -185,29 +209,46 @@ public class Juego extends javax.swing.JFrame {
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(fondoJuegojPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(22, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(fondoJuegojPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(22, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
+                        .addComponent(RegresarjButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton2)
+                        .addGap(26, 26, 26))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void TirarDadoJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TirarDadoJButtonActionPerformed
-        do {
-            t.juego();
-            datosPartida();
-        } while (t.ganador() == false);
 
+        t.juego();
+        datosPartida();
 
     }//GEN-LAST:event_TirarDadoJButtonActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void RegresarjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegresarjButtonActionPerformed
+        regresar = new MenuPrincipal();
+        regresar.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_RegresarjButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton RegresarjButton;
     private javax.swing.JButton TirarDadoJButton;
     private javax.swing.JTable enJuegojTable;
     private javax.swing.JPanel fondoJuegojPanel;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
@@ -223,9 +264,9 @@ public class Juego extends javax.swing.JFrame {
                 turnojLabel.setText(jugador.getNombre());
                 break;
             }
-            
+
         }
-        
+
     }
 
     class FondoPanel extends JPanel {

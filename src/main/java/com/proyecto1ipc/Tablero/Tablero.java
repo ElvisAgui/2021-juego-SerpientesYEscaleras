@@ -132,10 +132,14 @@ public class Tablero {
     }
 
     public void juego() {
-        int dado = tirarDado();
-        int i = turno();
-        reusable(i, dado);
-        acciones(i);
+        if (ganador() == false) {
+            int dado = tirarDado();
+            int i = turno();
+            reusable(i, dado);
+            acciones(i);
+        }
+            
+       
 
     }
 
