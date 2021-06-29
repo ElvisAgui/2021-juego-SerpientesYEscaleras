@@ -43,7 +43,7 @@ public class Tablero {
                     if (esColorIteracion) {
                         tablero[i][j].setBackground(Color.orange);
                     }
-                    if (i == LectorArchivoTxt.getDimenciones()[1] - 1 && j == LectorArchivoTxt.getDimenciones()[0] - 1) {
+                    if (i == LectorArchivoTxt.getDimenciones()[0] - 1 && j == LectorArchivoTxt.getDimenciones()[1] - 1) {
                         tablero[i][j].setBackground(Color.MAGENTA);
                     }
                     if (i == 0 && j == 0) {
@@ -84,22 +84,22 @@ public class Tablero {
      * @return
      */
     public Casilla tipo(int i, int j, int alto, int ancho, int cant, int pos, int x, int y) {
-        Casilla tem = new CasillaSimple(alto, ancho, cant, pos,0);
+        Casilla tem = new CasillaSimple(alto, ancho, cant, pos, 0);
         if (i == 0 && j == 0) {
-            tem = new CasillaSimple(alto, ancho, cant, pos,0);
+            tem = new CasillaSimple(alto, ancho, cant, pos, 0);
             tem.setBounds(x, y, ancho, alto);
             tem.setBackground(Color.RED);
 
         }
         for (int k = 0; k < LectorArchivoTxt.pierdeTur.length - 1; k += 2) {
             if (i == LectorArchivoTxt.pierdeTur[k] && j == LectorArchivoTxt.pierdeTur[k + 1]) {
-                tem = new CasillaPierdeT(alto, ancho, cant, pos,0);
+                tem = new CasillaPierdeT(alto, ancho, cant, pos, 0);
 
             }
         }
         for (int k = 0; k < LectorArchivoTxt.tiradado.length - 1; k += 2) {
             if (i == LectorArchivoTxt.tiradado[k] && j == LectorArchivoTxt.tiradado[k + 1]) {
-                tem = new CasillaTirarD(alto, ancho, cant, pos,0);
+                tem = new CasillaTirarD(alto, ancho, cant, pos, 0);
 
             }
         }
@@ -117,13 +117,13 @@ public class Tablero {
         }
         for (int k = 0; k < LectorArchivoTxt.subid.length - 4; k += 4) {
             if (i == LectorArchivoTxt.subid[k] && j == LectorArchivoTxt.subid[k + 1]) {
-                tem = new Casillasubida(alto, ancho, cant, pos,0);
+                tem = new Casillasubida(alto, ancho, cant, pos, 0);
 
             }
         }
         for (int k = 0; k < LectorArchivoTxt.bajad.length - 4; k += 4) {
             if (i == LectorArchivoTxt.bajad[k] && j == LectorArchivoTxt.bajad[k + 1]) {
-                tem = new CasillaBajada(alto, ancho, cant, pos,0);
+                tem = new CasillaBajada(alto, ancho, cant, pos, 0);
 
             }
         }
@@ -138,8 +138,8 @@ public class Tablero {
         acciones(i);
 
     }
-    
-    public void acciones(int i){
+
+    public void acciones(int i) {
         Casilla aux;
         if ((aux = obtenerCasill(i)) != null) {
             if (aux instanceof CasillaPierdeT) {
@@ -156,12 +156,12 @@ public class Tablero {
                 }
             }
             if (aux instanceof CasillaAvanza) {
-                int dad=aux.cantidadPos;
+                int dad = aux.cantidadPos;
                 JOptionPane.showMessageDialog(this.fondo, "Genial!!, Puedes avanzar " + dad + " casillas");
                 reusable(i, dad);
             }
             if (aux instanceof CasillaRetroced) {
-                int dad=aux.cantidadPos;
+                int dad = aux.cantidadPos;
                 JOptionPane.showMessageDialog(this.fondo, "UPPSS!!, retrocederas " + dad + " casillas");
                 reusable(i, -dad);
             }
@@ -183,8 +183,7 @@ public class Tablero {
         borrarFicha(i);
         cambiarPos(i, dado);
         pintaFicha(i);
-        
-        
+
     }
 
     public int posSubida(int i) {
@@ -233,7 +232,7 @@ public class Tablero {
 
             }
         }
-        return posFina-posActual ;
+        return posFina - posActual;
 
     }
 
@@ -294,9 +293,17 @@ public class Tablero {
         boolean ganador = false;
         for (Jugador jugador : ManjadorJugadores.Compitiendo) {
             if (jugador.getPos() == pos) {
+                jugador.setPartidadGanadas(1);
                 ganador = true;
                 JOptionPane.showMessageDialog(this.fondo, "Felicidades Jugador " + jugador.getNombre() + " Haz Ganado");
                 break;
+            }
+        }
+        if (ganador) {
+            for (Jugador jugador : ManjadorJugadores.Compitiendo) {
+                if (jugador.getPos() != pos) {
+                    jugador.setPartidadPerdiadas(1);
+                }
             }
         }
 
@@ -342,6 +349,4 @@ public class Tablero {
         return dado1 + dado2;
     }
 
-    
-    
 }

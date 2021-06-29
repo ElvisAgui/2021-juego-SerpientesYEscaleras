@@ -7,6 +7,7 @@ package com.proyecto1ipc.frontend;
 
 import com.proyecto1ipc.Archivos.LectorArchivoTxt;
 import com.proyecto1ipc.Tablero.Tablero;
+import com.proyecto1ipc.jugador.Jugador;
 import com.proyecto1ipc.jugador.ManejadorReportes;
 import com.proyecto1ipc.jugador.ManjadorJugadores;
 import java.awt.Graphics;
@@ -37,6 +38,7 @@ public class Juego extends javax.swing.JFrame {
         }
 
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -49,7 +51,7 @@ public class Juego extends javax.swing.JFrame {
         enJuegojTable = new javax.swing.JTable();
         TirarDadoJButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        turnojLabel = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
@@ -110,9 +112,9 @@ public class Juego extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Turno de;");
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 3, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setBorder(new javax.swing.border.MatteBorder(null));
+        turnojLabel.setFont(new java.awt.Font("Dialog", 3, 18)); // NOI18N
+        turnojLabel.setForeground(new java.awt.Color(0, 0, 0));
+        turnojLabel.setBorder(new javax.swing.border.MatteBorder(null));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -138,7 +140,7 @@ public class Juego extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(66, 66, 66)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(turnojLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -150,7 +152,7 @@ public class Juego extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(turnojLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addComponent(TirarDadoJButton)
                 .addGap(81, 81, 81))
@@ -192,8 +194,12 @@ public class Juego extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void TirarDadoJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TirarDadoJButtonActionPerformed
-        t.juego();
-         datosPartida();
+        do {
+            t.juego();
+            datosPartida();
+        } while (t.ganador() == false);
+
+
     }//GEN-LAST:event_TirarDadoJButtonActionPerformed
 
 
@@ -203,26 +209,25 @@ public class Juego extends javax.swing.JFrame {
     private javax.swing.JPanel fondoJuegojPanel;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel titlejLabel;
+    private javax.swing.JLabel turnojLabel;
     // End of variables declaration//GEN-END:variables
 
-    
-    
-    public void datosPartida(){
+    public void datosPartida() {
         ManejadorReportes.tablaPartida(ManjadorJugadores.Compitiendo, enJuegojTable);
+        for (Jugador jugador : ManjadorJugadores.Compitiendo) {
+            if (jugador.isTurno()) {
+                turnojLabel.setText(jugador.getNombre());
+                break;
+            }
+            
+        }
+        
     }
-    
-    
-    
-    
-    
-    
-    
-    
+
     class FondoPanel extends JPanel {
 
         private Image imagen;
