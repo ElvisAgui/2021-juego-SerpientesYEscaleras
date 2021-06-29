@@ -8,10 +8,9 @@ import javax.swing.JButton;
  * @author elvis_agui
  */
 public class CasillaAvanza extends Casilla implements Avanza {
-    private int cantidadPos =0;
     public CasillaAvanza(int altura, int ancho, int cantJug, int pos, int cantidadPos) {
-        super(altura, ancho, cantJug, pos);
-        this.cantidadPos = this.cantidadPos;
+        super(altura, ancho, cantJug, pos,cantidadPos);
+        
     }
 
     @Override

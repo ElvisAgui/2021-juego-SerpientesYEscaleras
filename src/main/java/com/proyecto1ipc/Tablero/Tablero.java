@@ -15,7 +15,6 @@ public class Tablero {
 
     private int pos = 0;
     private JPanel fondo;
-    private CasillaSimple purea = new CasillaSimple(45, 45, 4, 5);
     LectorArchivoTxt LectorArchivoTxt;
     private Casilla tablero[][];
 
@@ -85,22 +84,22 @@ public class Tablero {
      * @return
      */
     public Casilla tipo(int i, int j, int alto, int ancho, int cant, int pos, int x, int y) {
-        Casilla tem = new CasillaSimple(alto, ancho, cant, pos);
+        Casilla tem = new CasillaSimple(alto, ancho, cant, pos,0);
         if (i == 0 && j == 0) {
-            tem = new CasillaSimple(alto, ancho, cant, pos);
+            tem = new CasillaSimple(alto, ancho, cant, pos,0);
             tem.setBounds(x, y, ancho, alto);
             tem.setBackground(Color.RED);
 
         }
         for (int k = 0; k < LectorArchivoTxt.pierdeTur.length - 1; k += 2) {
             if (i == LectorArchivoTxt.pierdeTur[k] && j == LectorArchivoTxt.pierdeTur[k + 1]) {
-                tem = new CasillaPierdeT(alto, ancho, cant, pos);
+                tem = new CasillaPierdeT(alto, ancho, cant, pos,0);
 
             }
         }
         for (int k = 0; k < LectorArchivoTxt.tiradado.length - 1; k += 2) {
             if (i == LectorArchivoTxt.tiradado[k] && j == LectorArchivoTxt.tiradado[k + 1]) {
-                tem = new CasillaTirarD(alto, ancho, cant, pos);
+                tem = new CasillaTirarD(alto, ancho, cant, pos,0);
 
             }
         }
@@ -118,13 +117,13 @@ public class Tablero {
         }
         for (int k = 0; k < LectorArchivoTxt.subid.length - 4; k += 4) {
             if (i == LectorArchivoTxt.subid[k] && j == LectorArchivoTxt.subid[k + 1]) {
-                tem = new Casillasubida(alto, ancho, cant, pos);
+                tem = new Casillasubida(alto, ancho, cant, pos,0);
 
             }
         }
         for (int k = 0; k < LectorArchivoTxt.bajad.length - 4; k += 4) {
             if (i == LectorArchivoTxt.bajad[k] && j == LectorArchivoTxt.bajad[k + 1]) {
-                tem = new CasillaBajada(alto, ancho, cant, pos);
+                tem = new CasillaBajada(alto, ancho, cant, pos,0);
 
             }
         }
@@ -144,12 +143,12 @@ public class Tablero {
         Casilla aux;
         if ((aux = obtenerCasill(i)) != null) {
             if (aux instanceof CasillaPierdeT) {
-                ManjadorJugadores.Compitiendo.get(i).setPierdeTurno(((CasillaPierdeT) aux).pierdeTurno(i));
+                ManjadorJugadores.Compitiendo.get(i).setPierdeTurno(true);
                 JOptionPane.showMessageDialog(this.fondo, "UPss!!, Casilla Pierde Turno");
             }
             if (aux instanceof CasillaTirarD) {
                 JOptionPane.showMessageDialog(this.fondo, "Genial!!, Casilla repite tiro");
-                ManjadorJugadores.Compitiendo.get(i).setTurno(((CasillaTirarD) aux).tirarDado(i));
+                ManjadorJugadores.Compitiendo.get(i).setTurno(true);
                 if (i == ManjadorJugadores.Compitiendo.size() - 1) {
                     ManjadorJugadores.Compitiendo.get(0).setTurno(false);
                 } else {
@@ -157,13 +156,12 @@ public class Tablero {
                 }
             }
             if (aux instanceof CasillaAvanza) {
-                CasillaAvanza tem =(CasillaAvanza) aux;
-                int dad=4;//tem.avanza(i);
+                int dad=aux.cantidadPos;
                 JOptionPane.showMessageDialog(this.fondo, "Genial!!, Puedes avanzar " + dad + " casillas");
                 reusable(i, dad);
             }
             if (aux instanceof CasillaRetroced) {
-                int dad=4;//((CasillaRetroced) aux).retrocede(i);
+                int dad=aux.cantidadPos;
                 JOptionPane.showMessageDialog(this.fondo, "UPPSS!!, retrocederas " + dad + " casillas");
                 reusable(i, -dad);
             }
@@ -344,21 +342,6 @@ public class Tablero {
         return dado1 + dado2;
     }
 
-    public void xd() {
-        tablero[0][0].getNumJug()[0] = 1;
-        tablero[0][0].getNumJug()[1] = 1;
-        tablero[0][0].getNumJug()[2] = 1;
-        tablero[0][0].getNumJug()[3] = 1;
-    }
-
-    public void prueva() {
-        purea.getNumJug()[0] = 1;
-        purea.getNumJug()[1] = 1;
-        purea.getNumJug()[2] = 1;
-        purea.getNumJug()[3] = 1;
-        purea.agregar();
-        purea.setBounds(0, 0, 100, 100);
-        this.fondo.add(purea);
-        this.fondo.setBackground(Color.ORANGE);
-    }
+    
+    
 }

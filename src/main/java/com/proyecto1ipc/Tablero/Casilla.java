@@ -18,12 +18,14 @@ public abstract class Casilla extends JPanel {
     protected final int pos;
     protected int cantJug;
     protected int numJug[] = new int[4];
+    protected int cantidadPos;
 
-    public Casilla(int altura, int ancho, int cantJug, int pos) {
+    public Casilla(int altura, int ancho, int cantJug, int pos, int cantidadPos) {
         this.altura = altura;
         this.ancho = ancho;
         this.cantJug = cantJug;
         this.pos = pos;
+        this.cantidadPos=cantidadPos;
         inicializar();
     }
 

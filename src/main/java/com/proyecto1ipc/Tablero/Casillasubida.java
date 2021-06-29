@@ -9,8 +9,8 @@ import com.proyecto1ipc.Interfaces.Subida;
  */
 public class Casillasubida extends Casilla implements Subida{
 
-    public Casillasubida(int altura, int ancho, int cantJug, int pos) {
-        super(altura, ancho, cantJug, pos);
+    public Casillasubida(int altura, int ancho, int cantJug, int pos,int cantidadPos) {
+        super(altura, ancho, cantJug, pos,cantidadPos);
     }
 
     @Override

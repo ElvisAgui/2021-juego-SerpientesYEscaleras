@@ -8,8 +8,8 @@ import com.proyecto1ipc.Interfaces.PierdeTurno;
  */
 public class CasillaPierdeT extends Casilla implements PierdeTurno {
 
-    public CasillaPierdeT(int altura, int ancho, int cantJug, int pos) {
-        super(altura, ancho, cantJug, pos);
+    public CasillaPierdeT(int altura, int ancho, int cantJug, int pos,int cantidadPos) {
+        super(altura, ancho, cantJug, pos,cantidadPos);
     }
 
     @Override

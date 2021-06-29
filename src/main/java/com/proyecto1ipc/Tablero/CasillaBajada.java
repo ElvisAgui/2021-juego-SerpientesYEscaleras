@@ -8,8 +8,8 @@ import com.proyecto1ipc.Interfaces.Bajada;
  */
 public class CasillaBajada extends Casilla implements Bajada {
 
-    public CasillaBajada(int altura, int ancho, int cantJug, int pos) {
-        super(altura, ancho, cantJug, pos);
+    public CasillaBajada(int altura, int ancho, int cantJug, int pos, int cantidadPos) {
+        super(altura, ancho, cantJug, pos, cantidadPos);
     }
 
     @Override
