@@ -63,7 +63,6 @@ public class LectorArchivoTxt {
                     int i = indice(pierdeTur);
                     pierdeTur[i] = Integer.parseInt(campos[0]);
                     pierdeTur[i+1] = Integer.parseInt(campos[1]);
-                    System.out.println(pierdeTur[i]+" "+pierdeTur[i+1]);
                 }
             } else {
                 aux = linea.substring(0, 9);

@@ -13,7 +13,6 @@ public class Jugador {
     private int partidadPerdiadas;
     private int partidasJugadas;
     private boolean turno = false;
-    private boolean enPartida;
     private boolean pierdeTurno = false;
     private int pos=0;
 
@@ -23,17 +22,7 @@ public class Jugador {
         this.apellido = apellido;
 
     }
-    /**
-     * revisa si el jugador esta en partida y si es su turno
-     * @return 
-     */
-    public boolean enJuego() {
-        if (enPartida && turno) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+    
 
     //Inicio de Getters y setters
     public int getId() {
@@ -101,13 +90,7 @@ public class Jugador {
         this.turno = turno;
     }
 
-    public boolean isEnPartida() {
-        return enPartida;
-    }
-
-    public void setEnPartida(boolean enPartida) {
-        this.enPartida = enPartida;
-    }
+    
 
     public boolean isPierdeTurno() {
         return pierdeTurno;
