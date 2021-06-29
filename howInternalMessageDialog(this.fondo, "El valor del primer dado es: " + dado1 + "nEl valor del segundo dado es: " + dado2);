@@ -1,0 +1,83 @@
+[33mcommit d0e392560775c85d5e4feaee7a352f61e3d1aa60[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Elvis Aguilar <elat122e@gmail.com>
+Date:   Mon Jun 28 18:05:30 2021 -0600
+
+    movimiento simple implemetado
+
+[33mcommit 6721c13be520170e41214c4466c88ed19a997d0a[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: Elvis Aguilar <elat122e@gmail.com>
+Date:   Mon Jun 28 15:02:06 2021 -0600
+
+    tablero en espera del funcionamiento del juego
+
+[33mcommit 6acdee29c7678db897a59b7ffbac5e38dca359c7[m
+Author: Elvis Aguilar <elat122e@gmail.com>
+Date:   Mon Jun 28 11:05:46 2021 -0600
+
+    correccion del tablero
+
+[33mcommit 58dfe001b664f39227fda665ab0dbf45c0f02323[m
+Author: Elvis Aguilar <elat122e@gmail.com>
+Date:   Sun Jun 27 20:16:24 2021 -0600
+
+    clases para cada tipo de casilla
+
+[33mcommit b749c047a2e5170efe87cd430c8d335fe852bdba[m
+Author: Elvis Aguilar <elat122e@gmail.com>
+Date:   Sun Jun 27 15:43:25 2021 -0600
+
+    se crearon interfaces(acciones) para cada casilla
+
+[33mcommit 8b57ef1f4df63f79bdb4f8ae4e553c3485a7b389[m
+Author: Elvis Aguilar <elat122e@gmail.com>
+Date:   Sun Jun 27 15:11:40 2021 -0600
+
+    eleccion de jugadores listo
+
+[33mcommit 9f3945f91b13aff81742a7d49796c4bc433a11ef[m
+Author: Elvis Aguilar <elat122e@gmail.com>
+Date:   Sat Jun 26 22:38:43 2021 -0600
+
+    lector de texto corregido
+
+[33mcommit d769a3dab7dcc378012c3934d4f489f7295fb87d[m
+Author: Elvis Aguilar <elat122e@gmail.com>
+Date:   Sat Jun 26 21:58:00 2021 -0600
+
+    lector de archivos listo
+
+[33mcommit 4009ede559c2bb5424ef1183e83081adbe91cd96[m
+Author: Elvis Aguilar <elat122e@gmail.com>
+Date:   Sat Jun 26 18:22:02 2021 -0600
+
+    clase para leer archivos  texto
+
+[33mcommit 604703b311fef133f16df255b70ca93ebd90de0e[m
+Author: Elvis Aguilar <elat122e@gmail.com>
+Date:   Sat Jun 26 16:23:01 2021 -0600
+
+     se agrego el lobby para el juego
+
+[33mcommit 6ab6c6fbadc74a975e65e73d60c8f434b5a85391[m
+Author: Elvis Aguilar <elat122e@gmail.com>
+Date:   Sat Jun 26 00:44:03 2021 -0600
+
+    Funcion registrar jugadores terminad0
+
+[33mcommit 3df57e52baae40bf68dea71bb21040c4faf3bb21[m
+Author: Elvis Aguilar <elat122e@gmail.com>
+Date:   Fri Jun 25 23:50:49 2021 -0600
+
+    modificado el git ignore
+
+[33mcommit 4f13bba41cd040d647a0b5085bef4b4a59e4f7db[m
+Author: Elvis Aguilar <elat122e@gmail.com>
+Date:   Fri Jun 25 23:44:35 2021 -0600
+
+    primeras ventanas creadas
+
+[33mcommit 48d199ca65a020ee93581aa9f7579f8fc0a7ee74[m
+Author: Elvis Aguilar <elat122e@gmail.com>
+Date:   Fri Jun 25 23:43:07 2021 -0600
+
+    se inicio el proyceto
