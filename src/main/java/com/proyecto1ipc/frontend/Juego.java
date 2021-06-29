@@ -193,6 +193,7 @@ public class Juego extends javax.swing.JFrame {
 
     private void TirarDadoJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TirarDadoJButtonActionPerformed
         t.juego();
+         datosPartida();
     }//GEN-LAST:event_TirarDadoJButtonActionPerformed
 
 

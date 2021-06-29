@@ -40,7 +40,7 @@ public class ManejadorReportes {
         modelo.addColumn("Color Ficha");
         modelo.addColumn("Posicion");
         for (Jugador jugador : jugadores) {
-            modelo.addRow(new Object[]{jugador.getNombre(),color(indx),jugador.getPos()});
+            modelo.addRow(new Object[]{jugador.getNombre(),color(indx),(jugador.getPos()+1)});
             indx++;
         }
 

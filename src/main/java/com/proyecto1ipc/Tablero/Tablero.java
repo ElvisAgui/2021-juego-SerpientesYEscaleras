@@ -46,7 +46,6 @@ public class Tablero {
                     }
                     if (i == LectorArchivoTxt.getDimenciones()[1] - 1 && j == LectorArchivoTxt.getDimenciones()[0] - 1) {
                         tablero[i][j].setBackground(Color.MAGENTA);
-                        tablero[i][j].getNum().setText("Fin-");
                     }
                     if (i == 0 && j == 0) {
                         tablero[i][j].setBackground(Color.MAGENTA);
@@ -139,8 +138,43 @@ public class Tablero {
         borrarFicha(i);
         cambiarPos(i, dado);
         pintaFicha(i);
+        Casilla aux;
+        if (( aux = obtenerCasill(i))!= null) {
+            if (aux instanceof CasillaPierdeT) {
+                ManjadorJugadores.Compitiendo.get(i).setPierdeTurno(((CasillaPierdeT) aux).pierdeTurno(i));  
+                JOptionPane.showMessageDialog(null, "UPss!!, Casilla Pierde Turno");
+            }
+            if (aux instanceof CasillaTirarD) {
+                JOptionPane.showMessageDialog(null, "Genial!!, Casilla repite tiro");
+                ManjadorJugadores.Compitiendo.get(i).setTurno(((CasillaTirarD) aux).tirarDado(i));
+                if (i == ManjadorJugadores.Compitiendo.size() - 1) {
+                    ManjadorJugadores.Compitiendo.get(0).setTurno(false);
+                } else {
+                    ManjadorJugadores.Compitiendo.get(i + 1).setTurno(false);
+                }  
+            }
+            if (aux instanceof CasillaAvanza) {
+                
+            }
+            
+        }
     }
+    
+    public Casilla obtenerCasill(int i){
+        Casilla aux= null;
+        int pos = ManjadorJugadores.Compitiendo.get(i).getPos();
+        for (int j = 0; j < tablero.length; j++) {
+            for (int k = 0; k < tablero[j].length; k++) {
+                if (tablero[j][k].getPos() == pos) {
+                    aux = tablero[j][k];
+                    break;
+                }
+            }
 
+        }
+        return aux;
+    }
+    
     public void borrarFicha(int i) {
         int pos = ManjadorJugadores.Compitiendo.get(i).getPos();
         for (int j = 0; j < tablero.length; j++) {
@@ -226,9 +260,8 @@ public class Tablero {
     public int tirarDado() {
         int dado1 = (int) (Math.random() * 5) + 1;
         int dado2 = (int) (Math.random() * 5) + 1;
-        //JOptionPane.showMessageDialog(this.fondo, "El valor del primer dado es: " + dado1 + "\nEl valor del segundo dado es: " + dado2);
-        //JOptionPane.showInternalMessageDialog(this.fondo, "El valor del primer dado es: " + dado1 + "\nEl valor del segundo dado es: " + dado2);
-
+        JOptionPane.showMessageDialog(this.fondo, "El valor del primer dado es: " + dado1 + "\nEl valor del segundo dado es: " + dado2);
+        JOptionPane.showInternalMessageDialog(this.fondo, "El valor del primer dado es: " + dado1 + "\nEl valor del segundo dado es: " + dado2);
         return dado1 + dado2;
     }
 

@@ -65,7 +65,8 @@ public abstract class Casilla extends JPanel {
 
     public void agregar() {
         repitar();
-        num.setText("*" + pos + "*");
+        int temp=pos+1;
+        num.setText("*" + temp + "*");
         num.setBounds(0, 0, 30, 15);
         this.add(num);
         for (int i = 0; i < ficha.length; i++) {
