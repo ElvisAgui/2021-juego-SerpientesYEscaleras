@@ -1,5 +1,6 @@
 package com.proyecto1ipc.jugador;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -7,7 +8,7 @@ import javax.swing.JOptionPane;
  *
  * @author elvis_agui
  */
-public class ManjadorJugadores {
+public class ManjadorJugadores implements Serializable{
 
     public static ArrayList<Jugador> Jugadores = new ArrayList<Jugador>();
     public static ArrayList<Jugador> Compitiendo = new ArrayList<Jugador>();

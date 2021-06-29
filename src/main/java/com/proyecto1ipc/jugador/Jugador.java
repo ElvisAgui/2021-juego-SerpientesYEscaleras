@@ -1,10 +1,12 @@
 package com.proyecto1ipc.jugador;
 
+import java.io.Serializable;
+
 /**
  *
  * @author elvis_agui
  */
-public class Jugador {
+public class Jugador implements Serializable{
 
     private int id;
     private String nombre;

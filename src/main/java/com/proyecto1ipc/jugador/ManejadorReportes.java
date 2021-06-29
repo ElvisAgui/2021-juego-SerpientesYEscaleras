@@ -2,7 +2,6 @@
 package com.proyecto1ipc.jugador;
 
 import java.util.ArrayList;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -30,6 +29,21 @@ public class ManejadorReportes {
             lista.addItem(jugador.getId());
         }
         
+    }
+    public static void reporte(ArrayList<Jugador> jugadores, JTable table) {
+        DefaultTableModel modelo = new DefaultTableModel();
+        table.setModel(modelo);
+        //Anadir columnas
+        modelo.addColumn("ID");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Apellido");
+        modelo.addColumn("Partidas Ganada");
+        modelo.addColumn("Partidas Peridas");
+        modelo.addColumn("Partidas Jugadas");
+        for (Jugador jugador : jugadores) {
+            modelo.addRow(new Object[]{jugador.getId(),jugador.getNombre(),jugador.getApellido(),jugador.getPartidadGanadas(),jugador.getPartidadPerdiadas()+jugador.getPartidasJugadas()});
+        }
+
     }
     
     public static void tablaPartida(ArrayList<Jugador> jugadores, JTable table) {

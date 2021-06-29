@@ -17,6 +17,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private FondoPanel fondo = new FondoPanel();
     private RegistroJugadores registro = new RegistroJugadores();
     private LobbyJuego lobby = new LobbyJuego();
+    private Reportes reporte = new Reportes();
     
     public MenuPrincipal() {
         this.setContentPane(fondo);
@@ -155,7 +156,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jugarJButtonActionPerformed
 
     private void reportesJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportesJButtonActionPerformed
-        
+        reporte.setVisible(true);
     }//GEN-LAST:event_reportesJButtonActionPerformed
 
    
