@@ -7,6 +7,6 @@ package com.proyecto1ipc.Interfaces;
  */
 public interface Retrocede {
     
-    public int retrocede(int i, int pos);
+    public int retrocede(int i);
     
 }

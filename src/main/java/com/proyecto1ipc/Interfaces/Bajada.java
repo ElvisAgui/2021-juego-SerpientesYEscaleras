@@ -8,7 +8,7 @@ package com.proyecto1ipc.Interfaces;
 public interface Bajada {
     
     
-    public int retrocede(int i, int pos);
+    public int bajar(int i, int pos);
     
     
     

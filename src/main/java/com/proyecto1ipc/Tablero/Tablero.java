@@ -104,7 +104,7 @@ public class Tablero {
 
             }
         }
-        for (int k = 0; k < LectorArchivoTxt.avanza.length - 1; k += 2) {
+        for (int k = 0; k < LectorArchivoTxt.avanza.length - 3; k += 3) {
             if (i == LectorArchivoTxt.avanza[k] && j == LectorArchivoTxt.avanza[k + 1]) {
                 tem = new CasillaAvanza(alto, ancho, cant, pos, LectorArchivoTxt.avanza[k + 2]);
 
@@ -135,33 +135,112 @@ public class Tablero {
     public void juego() {
         int dado = tirarDado();
         int i = turno();
-        borrarFicha(i);
-        cambiarPos(i, dado);
-        pintaFicha(i);
+        reusable(i, dado);
+        acciones(i);
+
+    }
+    
+    public void acciones(int i){
         Casilla aux;
-        if (( aux = obtenerCasill(i))!= null) {
+        if ((aux = obtenerCasill(i)) != null) {
             if (aux instanceof CasillaPierdeT) {
-                ManjadorJugadores.Compitiendo.get(i).setPierdeTurno(((CasillaPierdeT) aux).pierdeTurno(i));  
-                JOptionPane.showMessageDialog(null, "UPss!!, Casilla Pierde Turno");
+                ManjadorJugadores.Compitiendo.get(i).setPierdeTurno(((CasillaPierdeT) aux).pierdeTurno(i));
+                JOptionPane.showMessageDialog(this.fondo, "UPss!!, Casilla Pierde Turno");
             }
             if (aux instanceof CasillaTirarD) {
-                JOptionPane.showMessageDialog(null, "Genial!!, Casilla repite tiro");
+                JOptionPane.showMessageDialog(this.fondo, "Genial!!, Casilla repite tiro");
                 ManjadorJugadores.Compitiendo.get(i).setTurno(((CasillaTirarD) aux).tirarDado(i));
                 if (i == ManjadorJugadores.Compitiendo.size() - 1) {
                     ManjadorJugadores.Compitiendo.get(0).setTurno(false);
                 } else {
                     ManjadorJugadores.Compitiendo.get(i + 1).setTurno(false);
-                }  
+                }
             }
             if (aux instanceof CasillaAvanza) {
-                
+                CasillaAvanza tem =(CasillaAvanza) aux;
+                int dad=4;//tem.avanza(i);
+                JOptionPane.showMessageDialog(this.fondo, "Genial!!, Puedes avanzar " + dad + " casillas");
+                reusable(i, dad);
             }
-            
+            if (aux instanceof CasillaRetroced) {
+                int dad=4;//((CasillaRetroced) aux).retrocede(i);
+                JOptionPane.showMessageDialog(this.fondo, "UPPSS!!, retrocederas " + dad + " casillas");
+                reusable(i, -dad);
+            }
+            if (aux instanceof CasillaBajada) {
+                int dadoAux = posBajada(i);
+                JOptionPane.showMessageDialog(this.fondo, "Bien!!, Bajaras " + dadoAux + " casillas");
+                reusable(i, dadoAux);
+            }
+            if (aux instanceof CasillaBajada) {
+                int dadoAux = posSubida(i);
+                JOptionPane.showMessageDialog(this.fondo, "OH NO!!, Subiras " + dadoAux + " casillas");
+                reusable(i, dadoAux);
+            }
+
         }
     }
-    
-    public Casilla obtenerCasill(int i){
-        Casilla aux= null;
+
+    public void reusable(int i, int dado) {
+        borrarFicha(i);
+        cambiarPos(i, dado);
+        pintaFicha(i);
+        
+        
+    }
+
+    public int posSubida(int i) {
+        int posi = 0, posj = 0;
+        int posFina = 0;
+        int posActual = ManjadorJugadores.Compitiendo.get(i).getPos();
+        for (int j = 0; j < tablero.length; j++) {
+            for (int k = 0; k < tablero[j].length; k++) {
+                if (tablero[j][k].getPos() == posActual) {
+                    posi = j;
+                    posj = k;
+                    break;
+                }
+            }
+        }
+        if (posi != 0 && posj != 0) {
+            for (int j = 0; j < LectorArchivoTxt.subid.length - 4; j += 4) {
+                if (posi == LectorArchivoTxt.subid[j] && posj == LectorArchivoTxt.subid[j + 1]) {
+                    posFina = tablero[j + 2][j + 3].getPos();
+                }
+
+            }
+        }
+        return posActual - posFina;
+
+    }
+
+    public int posBajada(int i) {
+        int posi = 0, posj = 0;
+        int posFina = 0;
+        int posActual = ManjadorJugadores.Compitiendo.get(i).getPos();
+        for (int j = 0; j < tablero.length; j++) {
+            for (int k = 0; k < tablero[j].length; k++) {
+                if (tablero[j][k].getPos() == posActual) {
+                    posi = j;
+                    posj = k;
+                    break;
+                }
+            }
+        }
+        if (posi != 0 && posj != 0) {
+            for (int j = 0; j < LectorArchivoTxt.bajad.length - 4; j += 4) {
+                if (posi == LectorArchivoTxt.bajad[j] && posj == LectorArchivoTxt.bajad[j + 1]) {
+                    posFina = tablero[j + 2][j + 3].getPos();
+                }
+
+            }
+        }
+        return posFina-posActual ;
+
+    }
+
+    public Casilla obtenerCasill(int i) {
+        Casilla aux = null;
         int pos = ManjadorJugadores.Compitiendo.get(i).getPos();
         for (int j = 0; j < tablero.length; j++) {
             for (int k = 0; k < tablero[j].length; k++) {
@@ -174,7 +253,7 @@ public class Tablero {
         }
         return aux;
     }
-    
+
     public void borrarFicha(int i) {
         int pos = ManjadorJugadores.Compitiendo.get(i).getPos();
         for (int j = 0; j < tablero.length; j++) {

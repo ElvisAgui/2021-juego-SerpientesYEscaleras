@@ -13,7 +13,7 @@ public class CasillaBajada extends Casilla implements Bajada {
     }
 
     @Override
-    public int retrocede(int i, int pos) {
+    public int bajar(int i, int pos) {
         int ret = 0;
         if (numJug[i] == 1) {
             ret = pos;

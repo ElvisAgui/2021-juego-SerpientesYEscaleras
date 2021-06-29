@@ -7,6 +7,6 @@ package com.proyecto1ipc.Interfaces;
  */
 public interface Avanza {
     
-    public int avanza(int i, int pos);
+    public int avanza(int i);
     
 }

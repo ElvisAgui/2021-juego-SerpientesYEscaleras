@@ -15,12 +15,11 @@ public class CasillaRetroced extends Casilla implements Retrocede{
     }
 
     @Override
-    public int retrocede(int i, int pos) {
+    public int retrocede(int i) {
         int retro = 0;
         if (numJug[i] == 1) {
-            retro = pos;
+            retro = cantidadPos;
         }
-       
         return retro;
         
     }
