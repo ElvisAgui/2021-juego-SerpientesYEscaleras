@@ -101,7 +101,7 @@ public class LectorArchivoTxt {
                             }
                         } else {
                             aux = linea.substring(0, 7);
-                            if (aux.equalsIgnoreCase(subida)) {
+                            if (aux.equalsIgnoreCase(bajada)) {
                                 String lineaDeCampos = linea.substring(subida.length(), linea.length() - 1);
                                 campos = lineaDeCampos.split(",");
                                 if (verificacion(campos)) {
@@ -113,7 +113,7 @@ public class LectorArchivoTxt {
                                 }
                             } else {
                                 aux = linea.substring(0, 7);
-                                if (aux.equalsIgnoreCase(bajada)) {
+                                if (aux.equalsIgnoreCase(subida)) {
                                     String lineaDeCampos = linea.substring(bajada.length(), linea.length() - 1);
                                     campos = lineaDeCampos.split(",");
                                     if (verificacion(campos)) {
