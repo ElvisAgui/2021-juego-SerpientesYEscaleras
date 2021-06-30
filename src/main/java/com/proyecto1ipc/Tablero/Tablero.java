@@ -91,13 +91,13 @@ public class Tablero {
             tem.setBackground(Color.RED);
 
         }
-        for (int k = 0; k < LectorArchivoTxt.pierdeTur.length - 1; k += 2) {
+        for (int k = 0; k < LectorArchivoTxt.pierdeTur.length - 2; k += 2) {
             if (i == LectorArchivoTxt.pierdeTur[k] && j == LectorArchivoTxt.pierdeTur[k + 1]) {
                 tem = new CasillaPierdeT(alto, ancho, cant, pos, 0);
 
             }
         }
-        for (int k = 0; k < LectorArchivoTxt.tiradado.length - 1; k += 2) {
+        for (int k = 0; k < LectorArchivoTxt.tiradado.length - 2; k += 2) {
             if (i == LectorArchivoTxt.tiradado[k] && j == LectorArchivoTxt.tiradado[k + 1]) {
                 tem = new CasillaTirarD(alto, ancho, cant, pos, 0);
 
@@ -109,7 +109,7 @@ public class Tablero {
 
             }
         }
-        for (int k = 0; k < LectorArchivoTxt.retroces.length - 1; k += 2) {
+        for (int k = 0; k < LectorArchivoTxt.retroces.length - 3; k += 3) {
             if (i == LectorArchivoTxt.retroces[k] && j == LectorArchivoTxt.retroces[k + 1]) {
                 tem = new CasillaRetroced(alto, ancho, cant, pos, LectorArchivoTxt.retroces[k + 2]);
 
@@ -138,8 +138,6 @@ public class Tablero {
             reusable(i, dado);
             acciones(i);
         }
-            
-       
 
     }
 
@@ -174,7 +172,7 @@ public class Tablero {
                 JOptionPane.showMessageDialog(this.fondo, "Bien!!, Bajaras " + dadoAux + " casillas");
                 reusable(i, dadoAux);
             }
-            if (aux instanceof CasillaBajada) {
+            if (aux instanceof Casillasubida) {
                 int dadoAux = posSubida(i);
                 JOptionPane.showMessageDialog(this.fondo, "OH NO!!, Subiras " + dadoAux + " casillas");
                 reusable(i, dadoAux);
@@ -203,15 +201,16 @@ public class Tablero {
                 }
             }
         }
-        if (posi != 0 && posj != 0) {
-            for (int j = 0; j < LectorArchivoTxt.subid.length - 4; j += 4) {
-                if (posi == LectorArchivoTxt.subid[j] && posj == LectorArchivoTxt.subid[j + 1]) {
-                    posFina = tablero[j + 2][j + 3].getPos();
-                }
 
+        for (int j = 0; j < LectorArchivoTxt.subid.length - 4; j += 4) {
+            if (posi == LectorArchivoTxt.subid[j] && posj == LectorArchivoTxt.subid[j + 1]) {
+                posFina = tablero[j + 2][j + 3].getPos();
+                break;
             }
+
         }
-        return posActual - posFina;
+
+        return posFina-posActual ;
 
     }
 
@@ -228,14 +227,15 @@ public class Tablero {
                 }
             }
         }
-        if (posi != 0 && posj != 0) {
-            for (int j = 0; j < LectorArchivoTxt.bajad.length - 4; j += 4) {
-                if (posi == LectorArchivoTxt.bajad[j] && posj == LectorArchivoTxt.bajad[j + 1]) {
-                    posFina = tablero[j + 2][j + 3].getPos();
-                }
 
+        for (int j = 0; j < LectorArchivoTxt.bajad.length - 4; j += 4) {
+            if (posi == LectorArchivoTxt.bajad[j] && posj == LectorArchivoTxt.bajad[j + 1]) {
+                posFina = tablero[j + 2][j + 3].getPos();
+                break;
             }
+
         }
+
         return posFina - posActual;
 
     }
@@ -296,7 +296,7 @@ public class Tablero {
     public boolean ganador() {
         boolean ganador = false;
         for (Jugador jugador : ManjadorJugadores.Compitiendo) {
-            if (jugador.getPos() >= (LectorArchivoTxt.getDimenciones()[1]*LectorArchivoTxt.getDimenciones()[0])) {
+            if (jugador.getPos() >= (LectorArchivoTxt.getDimenciones()[1] * LectorArchivoTxt.getDimenciones()[0])) {
                 jugador.setPartidadGanadas(1);
                 ganador = true;
                 JOptionPane.showMessageDialog(this.fondo, "Felicidades Jugador " + jugador.getNombre() + " Haz Ganado");

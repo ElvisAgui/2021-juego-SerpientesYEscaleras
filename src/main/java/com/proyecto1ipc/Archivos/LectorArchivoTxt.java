@@ -53,6 +53,7 @@ public class LectorArchivoTxt {
             if (verificacion(campos)) {
                 dimenciones[0] = Integer.parseInt(campos[0]);
                 dimenciones[1] = Integer.parseInt(campos[1]);
+                
             }
         } else {
             aux = linea.substring(0, 12);
@@ -63,9 +64,10 @@ public class LectorArchivoTxt {
                     int i = indice(pierdeTur);
                     pierdeTur[i] = Integer.parseInt(campos[0]);
                     pierdeTur[i+1] = Integer.parseInt(campos[1]);
+                    
                 }
             } else {
-                aux = linea.substring(0, 9);
+                aux = linea.substring(0, 10);
                 if (aux.equalsIgnoreCase(tirarDado)) {
                     String lineaDeCampos = linea.substring(tirarDado.length(), linea.length() - 1);
                     campos = lineaDeCampos.split(",");
@@ -73,6 +75,7 @@ public class LectorArchivoTxt {
                         int i = indice(tiradado);
                         tiradado[i] = Integer.parseInt(campos[0]);
                         tiradado[i+1] = Integer.parseInt(campos[1]);
+                        
                     }
                 } else {
                     aux = linea.substring(0, 7);
